@@ -1,0 +1,15 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    Details
+{% endblock %}
+
+{% block content %}
+    <div>
+        <img style="height: 300px; width: 50%; display: block;" src="{{ details.imagen.url }}">
+        <h1>{{ details.title }}</h1>
+        <p>{{ details.description }}</p>
+        <h6>Creado por: {{ details.user }}</h6>
+    </div>
+
+{% endblock %}

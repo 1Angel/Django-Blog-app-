@@ -1,0 +1,35 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+    <h1>Post</h1>
+
+    {% if not post %}
+        <p>No hay post para mostrar</p>
+    {% else %}
+        <div class="container-fluid">
+            <div class="row">
+                {% for post in post %}
+                    <div class="col-auto">
+                        <div class="card border-primary mb-3">
+                            <a href="{% url 'details' post.id %}">
+                                <img class="card-img-top" width="297" height="180" src="{{ post.imagen.url }}"
+                                     alt="Card image">
+                            </a>
+                            <div class="card-header">
+
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ post.title }}</h4>
+                                <p class="card-text">{{ post.content|slice:":200" }}</p>
+                                <h6 class="card-subtitle">Creado por: {{ post.user }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
